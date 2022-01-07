@@ -1,0 +1,6 @@
+# ninja log v5
+2	1862	1641508797274255205	CMakeFiles/executable_analysis.dir/main.cpp.o	108b957a4d3e1b1d
+1864	2018	1641508797433941067	executable_analysis	33dd1b75838e3219
+10	1141	1641515116873170102	CMakeFiles/executable_analysis.dir/Arithmetic.cpp.o	587ed6d0411e82b8
+6	2633	1641515118390806753	CMakeFiles/executable_analysis.dir/main.cpp.o	108b957a4d3e1b1d
+2634	2837	1641515118603639100	executable_analysis	f413ab5c88b54798
