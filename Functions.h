@@ -3,25 +3,31 @@
 
 #include "cmath"
 #include "climits"
+#include "CONSTANTS.h"
 
 typedef long double (*FUNCTION_N_)(long long int); //Type of function's address with natural argument
 typedef long double (*FUNCTION_R_)(long double); //Type of function's address with real argument
 typedef long double (*FUNCTION_C_)(/*TODO: make functionality for ComplexNumber*/); //Type of function's address with complex argument
-
-const long double epsilon = 1e-20;
 
 namespace analysis{
 
     class Function{
     private:
         FUNCTION_R_ func;
-    public:
+    public:// x^2
         explicit Function(FUNCTION_R_ f){
             func = f;
         }
 
-        long  double call(long double x){
+        long double call(long double x){
             return func(x);
+        }
+
+        bool isConverge(){//TODO: Check whether there is another way to test functions on convergence!
+            for(long long int i = LONG_LONG_MAX - rangeElements; i < LONG_LONG_MAX - 1; i++){
+                if( abs(func(i + 1) - func(i)) > epsilon) return false;
+            }
+            return true;
         }
 
 
@@ -76,7 +82,7 @@ namespace analysis{
          * @return
          */
         bool isConverge(){//TODO: Check whether there is another way to test functions on convergence!
-            for(long long int i = LONG_LONG_MAX - 1000; i < LONG_LONG_MAX - 1; i++){
+            for(long long int i = LONG_LONG_MAX - rangeElements; i < LONG_LONG_MAX - 1; i++){
                 if( abs(func(i + 1) - func(i)) > epsilon) return false;
             }
             return true;
@@ -93,4 +99,5 @@ namespace analysis{
     };
 
 }
+
 #endif //EXECUTABLE_ANALYSIS_FUNCTIONS_H
